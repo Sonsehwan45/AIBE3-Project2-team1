@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class ArticleService {
     private final ArticleRepository articleRepository;
@@ -26,5 +27,18 @@ public class ArticleService {
         List<Article> articles = articleRepository.findAll();
         Collections.reverse(articles);
         return articles;
+    }
+
+    public Optional<Article> findById(int id) {
+        return articleRepository.findById(id);
+    }
+
+    public boolean delete(int id) {
+        Optional<Article> articleOpt = findById(id);
+        if (articleOpt.isPresent()) {
+            articleRepository.delete(articleOpt.get());
+            return true;
+        }
+        return false;
     }
 }

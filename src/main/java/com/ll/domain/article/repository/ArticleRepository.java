@@ -4,6 +4,7 @@ import com.ll.domain.article.entity.Article;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ArticleRepository {
     private final List<Article> articles = new ArrayList<>();
@@ -17,5 +18,15 @@ public class ArticleRepository {
 
     public List<Article> findAll() {
         return new ArrayList<>(articles);
+    }
+
+    public Optional<Article> findById(int id) {
+        return articles.stream()
+                .filter(article -> article.getId() == id)
+                .findFirst();
+    }
+
+    public void delete(Article article) {
+        articles.remove(article);
     }
 }

@@ -77,4 +77,38 @@ public class AppTest {
                     assertThat(pos2).isLessThan(pos1);
                 });
     }
+
+    @Test
+    @DisplayName("게시글을 삭제하면 삭제 메시지가 출력되고 목록에서 사라진다")
+    void t4() {
+        String rs = AppTestRunner.run("""
+                등록
+                제목1
+                내용1
+                등록
+                제목2
+                내용2
+                삭제?id=1
+                목록
+                종료
+                """);
+
+        assertThat(rs)
+                .contains("1번 게시글이 삭제되었습니다.")
+                .doesNotContain("1 | 제목1 |"); // 목록에 1번 글이 없어야 함
+    }
+
+    @Test
+    @DisplayName("존재하지 않는 게시글 삭제 시 예외 메시지를 출력한다")
+    void t5() {
+        String rs = AppTestRunner.run("""
+                등록
+                제목1
+                내용1
+                삭제?id=99
+                종료
+                """);
+
+        assertThat(rs).contains("99번 게시글은 존재하지 않습니다.");
+    }
 }
