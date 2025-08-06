@@ -41,4 +41,15 @@ public class ArticleService {
         }
         return false;
     }
+
+    public boolean update(int id, String newTitle, String newContent) {
+        Optional<Article> articleOpt = findById(id);
+        if (articleOpt.isPresent()) {
+            Article article = articleOpt.get();
+            article.setTitle(newTitle);
+            article.setContent(newContent);
+            return true;
+        }
+        return false;
+    }
 }

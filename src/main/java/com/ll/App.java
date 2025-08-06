@@ -34,6 +34,12 @@ public class App {
                 case "삭제":
                     articleController.delete(rq);
                     break;
+                case "수정":
+                    articleController.update(rq);
+                    break;
+                case "상세보기":
+                    articleController.detail(rq);
+                    break;
                 default:
                     System.out.println("알 수 없는 명령어입니다.");
                     break;

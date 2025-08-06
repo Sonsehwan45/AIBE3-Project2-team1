@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="319fb92b-f4c9-4a16-b42a-d81a9ccec30e" name="변경" comment="[feat] 삭제 기능 추가">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/Rq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/Rq.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/repository/ArticleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/service/ArticleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/ll/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ll/AppTest.java" afterDir="false" />
     </list>
@@ -172,7 +169,7 @@
       <option name="presentableId" value="Default" />
       <updated>1753316516235</updated>
       <workItem from="1754504025813" duration="6175000" />
-      <workItem from="1754511740210" duration="16000" />
+      <workItem from="1754511740210" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="[fix]빌드 파일 수정">
       <option name="closed" value="true" />
@@ -198,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754507262816</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[feat] 삭제 기능 추가">
+      <option name="closed" value="true" />
+      <created>1754511832739</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754511832739</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +213,7 @@
     <MESSAGE value="[fix]빌드 파일 수정" />
     <MESSAGE value="[fix] 설정 변경" />
     <MESSAGE value="[feat] 목록 기능 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat] 목록 기능 추가" />
+    <MESSAGE value="[feat] 삭제 기능 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat] 삭제 기능 추가" />
   </component>
 </project>

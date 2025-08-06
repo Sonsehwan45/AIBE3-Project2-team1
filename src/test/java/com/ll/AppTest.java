@@ -111,4 +111,27 @@ public class AppTest {
 
         assertThat(rs).contains("99번 게시글은 존재하지 않습니다.");
     }
+
+    void t6() {
+        String rs = AppTestRunner.run("""
+                등록
+                제목1
+                내용1
+                등록
+                제목2
+                내용2
+                수정?id=2
+                수정된 제목
+                수정된 내용
+                상세보기?id=2
+                종료
+                """);
+
+        assertThat(rs).contains("2번 게시글이 수정되었습니다.");
+
+        // 상세 보기 결과에서 내용이 변경되었는지 확인
+        assertThat(rs)
+                .contains("제목: 수정된 제목")
+                .contains("내용: 수정된 내용");
+    }
 }
