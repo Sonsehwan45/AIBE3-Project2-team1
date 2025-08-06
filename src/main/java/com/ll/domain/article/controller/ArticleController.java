@@ -45,7 +45,6 @@ public class ArticleController {
     }
 
     public void delete(Rq rq) {
-        // getParam() 대신 getIntParam()을 사용하도록 수정
         int id = rq.getIntParam("id", 0);
         if (id == 0) {
             System.out.println("id를 올바르게 입력해주세요.");

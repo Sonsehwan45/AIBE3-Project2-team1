@@ -21,28 +21,17 @@ public class App {
             Rq rq = new Rq(command);
 
             switch (rq.getAction()) {
-                case "종료":
+                case "종료" ->{
                     System.out.println("프로그램을 종료합니다.");
                     AppContext.close();
                     return;
-                case "등록":
-                    articleController.write();
-                    break;
-                case "목록":
-                    articleController.list();
-                    break;
-                case "삭제":
-                    articleController.delete(rq);
-                    break;
-                case "수정":
-                    articleController.update(rq);
-                    break;
-                case "상세보기":
-                    articleController.detail(rq);
-                    break;
-                default:
-                    System.out.println("알 수 없는 명령어입니다.");
-                    break;
+                }
+                case "등록" -> articleController.write();
+                case "목록" -> articleController.list();
+                case "삭제" -> articleController.delete(rq);
+                case "수정" -> articleController.update(rq);
+                case "상세보기" -> articleController.detail(rq);
+                default -> System.out.println("알 수 없는 명령어입니다.");
             }
         }
     }
