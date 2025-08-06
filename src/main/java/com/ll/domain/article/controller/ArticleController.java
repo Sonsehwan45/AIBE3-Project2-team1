@@ -1,8 +1,10 @@
 package com.ll.domain.article.controller;
 
-import com.ll.domain.article.service.ArticleService;
 import com.ll.AppContext;
+import com.ll.domain.article.entity.Article;
+import com.ll.domain.article.service.ArticleService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ArticleController {
@@ -23,5 +25,21 @@ public class ArticleController {
         String content = getScanner().nextLine();
         int id = articleService.write(title, content);
         System.out.printf("%d번 게시글이 등록되었습니다.\n", id);
+    }
+
+    public void list() {
+        List<Article> articles = articleService.findAll();
+
+        if (articles.isEmpty()) {
+            System.out.println("게시글이 없습니다.");
+            return;
+        }
+
+        System.out.println("번호 | 제목 | 등록일");
+        System.out.println("--------------------------");
+        for (Article article : articles) {
+            System.out.printf("%d | %s | %s\n",
+                    article.getId(), article.getTitle(), article.getRegDate().substring(0, 10));
+        }
     }
 }

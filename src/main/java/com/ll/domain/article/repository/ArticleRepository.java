@@ -14,4 +14,8 @@ public class ArticleRepository {
         articles.add(article);
         return article;
     }
+
+    public List<Article> findAll() {
+        return new ArrayList<>(articles);
+    }
 }

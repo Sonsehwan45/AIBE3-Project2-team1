@@ -21,12 +21,15 @@ public class App {
             Rq rq = new Rq(command);
 
             switch (rq.getAction()) {
-                case "exit":
+                case "종료":
                     System.out.println("프로그램을 종료합니다.");
                     AppContext.close();
                     return;
-                case "write":
+                case "등록":
                     articleController.write();
+                    break;
+                case "목록":
+                    articleController.list();
                     break;
                 default:
                     System.out.println("알 수 없는 명령어입니다.");

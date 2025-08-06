@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="319fb92b-f4c9-4a16-b42a-d81a9ccec30e" name="변경" comment="[fix]빌드 파일 수정" />
+    <list default="true" id="319fb92b-f4c9-4a16-b42a-d81a9ccec30e" name="변경" comment="[fix] 설정 변경">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/repository/ArticleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ll/domain/article/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ll/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ll/AppTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +51,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.aibe3_Project2_team1 [:com.ll.Main.main()].executor": "Run",
+    "JUnit.AppTest.t2.executor": "Run",
+    "JUnit.AppTest.t3.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -59,6 +68,38 @@
   }
 }]]></component>
   <component name="RunManager">
+    <configuration name="AppTest.t2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aibe3_Project2_team1.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ll.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ll" />
+      <option name="MAIN_CLASS_NAME" value="com.ll.AppTest" />
+      <option name="METHOD_NAME" value="t2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppTest.t3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aibe3_Project2_team1.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ll.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ll" />
+      <option name="MAIN_CLASS_NAME" value="com.ll.AppTest" />
+      <option name="METHOD_NAME" value="t3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="aibe3_Project2_team1" />
       <method v="2">
@@ -70,6 +111,12 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AppTest.t3" />
+        <item itemvalue="JUnit.AppTest.t2" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -86,7 +133,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1753316516235</updated>
-      <workItem from="1754504025813" duration="1206000" />
+      <workItem from="1754504025813" duration="2572000" />
     </task>
     <task id="LOCAL-00001" summary="[fix]빌드 파일 수정">
       <option name="closed" value="true" />
@@ -96,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754504475100</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[fix] 설정 변경">
+      <option name="closed" value="true" />
+      <created>1754505636746</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754505636746</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +159,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[fix]빌드 파일 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[fix]빌드 파일 수정" />
+    <MESSAGE value="[fix] 설정 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fix] 설정 변경" />
   </component>
 </project>
