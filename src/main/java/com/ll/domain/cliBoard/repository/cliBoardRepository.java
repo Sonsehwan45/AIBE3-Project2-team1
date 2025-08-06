@@ -1,29 +1,35 @@
 package com.ll.domain.cliBoard.repository;
 
-import com.ll.domain.cliBoard.entity.cliBoard;
+import com.ll.domain.cliBoard.entity.CliBoard;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class cliBoardRepository {
-    private final List<cliBoard> cliBoardList = new ArrayList<>();
+    private final List<CliBoard> cliBoardList = new ArrayList<>();
     private int lastId = 0;
 
-    public cliBoard save (cliBoard cliBoard) {
+    public CliBoard save (CliBoard cliBoard) {
         if (cliBoard.isNew()) {
             cliBoard.setId(++lastId);
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = today.format(formatter);
+            cliBoard.setCreateDate(formattedDate);
             cliBoardList.add(cliBoard);
         }
 
         return cliBoard;
     }
 
-    public List<cliBoard> findForList() {
+    public List<CliBoard> findForList() {
         return cliBoardList.reversed();
     }
 
-    public void delete(cliBoard cliBoard) {
+    public void delete(CliBoard cliBoard) {
         cliBoardList.remove(cliBoard);
     }
 
@@ -35,7 +41,7 @@ public class cliBoardRepository {
                 .orElse(-1);
     }
 
-    public cliBoard findById(int id) {
+    public CliBoard findById(int id) {
         int index = findIndexById(id);
 
         if (index == -1) return null;

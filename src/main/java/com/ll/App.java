@@ -19,16 +19,17 @@ public class App {
         System.out.println("== CLI 게시판 앱 ==");
 
         while(true){
-            System.out.print("명령 : ");
+            System.out.print("명령어 : ");
             String cmd = scanner.nextLine().trim();
             Rq rq = new Rq(cmd);
 
             switch(rq.getActionName()){
-                case "등록" -> cliBoardController.actionWrite();
-                case "목록" -> cliBoardController.actionList();
-                case "삭제" -> cliBoardController.actionDelete(rq);
-                case "수정" -> cliBoardController.actionModify(rq);
-                case "종료" -> {
+                case "write" -> cliBoardController.actionWrite();
+                case "list" -> cliBoardController.actionList();
+                case "detail" -> cliBoardController.actionDetail(rq);
+                case "delete" -> cliBoardController.actionDelete(rq);
+                case "update" -> cliBoardController.actionModify(rq);
+                case "exit" -> {
                     systemController.actionExit();
                     return;
                 }
