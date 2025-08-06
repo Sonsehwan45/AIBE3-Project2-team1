@@ -1,15 +1,17 @@
-package com.ll;
+package com.ll.domain.article.contorller;
 
+import com.ll.AppTestRunner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class AppTest {
+public class ArticleControllerTest {
+
     @Test
     @DisplayName("프로그램 시작 시 초기 데이터가 포함된 환영 메시지를 출력한다")
     void t0() {
-        String rs = AppTestRunner.run("exit"); // 'exit'만 입력하여 바로 종료
+        String rs = AppTestRunner.run("exit");
 
         assertThat(rs)
                 .startsWith("== 게시판 프로그램 시작 ==")
@@ -30,7 +32,6 @@ public class AppTest {
         assertThat(rs)
                 .contains("제목: ")
                 .contains("내용: ")
-                .contains("1번 게시글이 등록되었습니다."); // 초기 데이터 2개 + 새로 1개
+                .contains("3번 게시글이 등록되었습니다."); // 초기 데이터 2개 + 새로 1개
     }
-
 }
