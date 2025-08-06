@@ -111,4 +111,40 @@ public class AppTest {
 
         assertThat(rs).contains("99번 게시글은 존재하지 않습니다.");
     }
+
+    @Test
+    @DisplayName("게시글을 수정하면 수정 메시지가 출력되고 내용이 변경된다")
+    void t6() {
+        String rs = AppTestRunner.run("""
+                등록
+                제목1
+                내용1
+                등록
+                제목2
+                내용2
+                수정?id=2
+                수정된 제목
+                수정된 내용
+                상세보기?id=2
+                종료
+                """);
+
+        assertThat(rs).contains("2번 게시글이 수정되었습니다.");
+
+        assertThat(rs)
+                .contains("제목: 수정된 제목")
+                .contains("내용: 수정된 내용");
+    }
+
+    @Test
+    @DisplayName("존재하지 않는 게시글 수정 시 예외 메시지를 출력한다")
+    void t7() {
+        String rs = AppTestRunner.run("""
+                수정?id=99
+                종료
+                """);
+
+        assertThat(rs).contains("99번 게시글은 존재하지 않습니다.");
+    }
+
 }
