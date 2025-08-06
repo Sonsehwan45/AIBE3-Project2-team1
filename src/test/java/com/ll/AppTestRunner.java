@@ -1,7 +1,5 @@
 package com.ll;
 
-import com.ll.App;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -9,19 +7,22 @@ import java.io.PrintStream;
 
 public class AppTestRunner {
     public static String run(String input) {
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        InputStream systemIn = System.in;
+        PrintStream systemOut = System.out;
 
+        InputStream in = new ByteArrayInputStream(input.getBytes());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        System.setIn(in);
         System.setOut(new PrintStream(out));
 
-        new App().run();
+        try {
+            new App().run();
+        } finally {
+            System.setIn(systemIn);
+            System.setOut(systemOut);
+        }
 
-        String result = out.toString();
-
-        System.setIn(System.in);
-        System.setOut(System.out);
-
-        return result;
+        return out.toString();
     }
 }
