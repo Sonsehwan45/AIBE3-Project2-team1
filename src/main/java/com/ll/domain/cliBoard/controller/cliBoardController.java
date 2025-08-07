@@ -41,6 +41,13 @@ public class cliBoardController {
 
     public void actionDetail(Rq rq){
         int id = rq.getParamsAsInt("id", -1);
+        if(id == -1){
+            System.out.println("id를 정확히 입력해주세요");
+            return;
+        }
+        CliBoard cliBoard = cliBoardService.findById(id);
+        System.out.printf("번호: %d\n제목: %s\n내용: %s\n등록일: %s\n", id, cliBoard.getTitle(), cliBoard.getContent(), cliBoard.getCreateDate());
+
     }
 
     public void actionDelete(Rq rq) {
@@ -61,5 +68,15 @@ public class cliBoardController {
     }
 
     public void actionModify(Rq rq) {
+        int id = rq.getParamsAsInt("id", -1);
+        if(id == -1){
+            System.out.println("id를 정확히 입력해주세요");
+            return;
+        }
+        CliBoard cliBoard = cliBoardService.findById(id);
+        System.out.printf("제목 (현재: %s):", cliBoard.getTitle());
+        String updateTitle = scanner.nextLine();
+        System.out.printf("내용 (현재: %s):", cliBoard.getContent());
+        String updateContent = scanner.nextLine();
     }
 }
