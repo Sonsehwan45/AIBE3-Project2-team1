@@ -27,6 +27,7 @@ public class cliBoardController {
         CliBoard cliBoard = cliBoardService.write(title, content);
 
         System.out.println(cliBoard);
+
         System.out.println("=> 게시글이 등록되었습니다.");
         //System.out.printf("%d번이 등록되었습니다.\n", cliBoard.getId());
     }
