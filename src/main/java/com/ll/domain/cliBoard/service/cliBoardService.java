@@ -37,7 +37,7 @@ public class cliBoardService {
         return cliBoardRepository.findById(id);
     }
 
-    public void modify(CliBoard cliBoard, String modifyContent, String modifyTitle) {
+    public void update(CliBoard cliBoard, String modifyTitle, String modifyContent) {
         cliBoard.setContent(modifyContent);
         cliBoard.setTitle(modifyTitle);
 

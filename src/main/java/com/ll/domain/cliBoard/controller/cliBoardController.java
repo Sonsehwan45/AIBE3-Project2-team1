@@ -64,7 +64,7 @@ public class cliBoardController {
             return;
         }
 
-        System.out.printf("%d번 게시글이 삭제되었습니다.\n", id);
+        System.out.printf("=> %d번 게시글이 삭제되었습니다.\n", id);
     }
 
     public void actionModify(Rq rq) {
@@ -78,5 +78,8 @@ public class cliBoardController {
         String updateTitle = scanner.nextLine();
         System.out.printf("내용 (현재: %s):", cliBoard.getContent());
         String updateContent = scanner.nextLine();
+
+        cliBoardService.update(cliBoard, updateTitle, updateContent);
+        System.out.printf("=> %d번 게시글이 수정되었습니다.\n", id);
     }
 }
