@@ -19,8 +19,8 @@ public class AppContext {
     public static void renew (Scanner _scanner) {
         scanner = _scanner;
         systemController = new SystemController();
-        cliBoardRepository = new cliBoardRepository();
         cliBoardFileRepository = new cliBoardFileRepository();
+        cliBoardRepository = new cliBoardRepository(cliBoardFileRepository.findAll()); //파일 읽어오기
         cliBoardService = new cliBoardService();
         cliBoardController = new cliBoardController();
     }

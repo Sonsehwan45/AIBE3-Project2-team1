@@ -9,9 +9,16 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class cliBoardRepository {
-    private final List<CliBoard> cliBoardList = new ArrayList<>();
+    private final List<CliBoard> cliBoardList;
     private int lastId = 0;
-    private int lastViewCount = 0;
+
+    public cliBoardRepository(List<CliBoard> initialData) {
+        this.cliBoardList = new ArrayList<>(initialData);
+        this.lastId = cliBoardList.stream()
+                .mapToInt(CliBoard::getId)
+                .max()
+                .orElse(0);
+    }
 
     public CliBoard save (CliBoard cliBoard) {
         if (cliBoard.isNew()) {
