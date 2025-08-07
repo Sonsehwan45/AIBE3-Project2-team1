@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 public class cliBoardRepository {
     private final List<CliBoard> cliBoardList = new ArrayList<>();
     private int lastId = 0;
+    private int lastViewCount = 0;
 
     public CliBoard save (CliBoard cliBoard) {
         if (cliBoard.isNew()) {
@@ -20,6 +21,7 @@ public class cliBoardRepository {
             String formattedDate = today.format(formatter);
             cliBoard.setCreateDate(formattedDate);
             cliBoardList.add(cliBoard);
+            cliBoard.setViewCount(0);
         }
 
         return cliBoard;

@@ -32,10 +32,10 @@ public class cliBoardController {
     }
 
     public void actionList() {
-        System.out.println("번호 / 제목 / 등록일");
+        System.out.println("번호 / 제목 / 등록일 / 조회수");
         System.out.println("----------------------");
         for (CliBoard cliBoard : cliBoardService.findForList()) {
-            System.out.printf("%d / %s / %s\n", cliBoard.getId(), cliBoard.getTitle(), cliBoard.getCreateDate());
+            System.out.printf("%d / %s / %s / %s\n", cliBoard.getId(), cliBoard.getTitle(), cliBoard.getCreateDate(), cliBoard.getViewCount());
         }
     }
 
@@ -46,7 +46,8 @@ public class cliBoardController {
             return;
         }
         CliBoard cliBoard = cliBoardService.findById(id);
-        System.out.printf("번호: %d\n제목: %s\n내용: %s\n등록일: %s\n", id, cliBoard.getTitle(), cliBoard.getContent(), cliBoard.getCreateDate());
+        cliBoardService.increaseViewCount(id);
+        System.out.printf("번호: %d\n제목: %s\n내용: %s\n등록일: %s\n조회수: %d\n", id, cliBoard.getTitle(), cliBoard.getContent(), cliBoard.getCreateDate(), cliBoard.getViewCount());
 
     }
 

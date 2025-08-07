@@ -16,6 +16,7 @@ public class CliBoard {
     private String title;
     private String content;
     private String createDate;
+    private int viewCount;
     private LocalDateTime modifyDate;
 
     public CliBoard(String title, String content) {
@@ -26,4 +27,7 @@ public class CliBoard {
         return id == 0;
     }
 
+    public void increaseViewCount() {
+        this.viewCount++;
+    }
 }

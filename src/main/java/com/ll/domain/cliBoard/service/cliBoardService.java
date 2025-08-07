@@ -43,4 +43,12 @@ public class cliBoardService {
 
         cliBoardRepository.save(cliBoard);
     }
+
+    public void increaseViewCount(int id){
+        CliBoard cliboard = findById(id);
+        if (cliboard == null) return;
+
+        cliboard.increaseViewCount();
+        cliBoardRepository.save(cliboard);
+    }
 }
