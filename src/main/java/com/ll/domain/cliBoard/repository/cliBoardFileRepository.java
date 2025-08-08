@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class cliBoardFileRepository {
+    private static final String dataFilePath = "db/cliBoard/data.json";
+
     public void save(CliBoard cliBoard){
         if (cliBoard.isNew()){
             int newId = getLastId() + 1;
@@ -60,24 +63,47 @@ public class cliBoardFileRepository {
         return getTableDirPath() + "/lastId.txt";
     }
 
+//    public List<CliBoard> findAll() {
+//        List<CliBoard> cliBoardList = new ArrayList<>();
+//        File tableDir = new File(getTableDirPath());
+//        if (!tableDir.exists() || !tableDir.isDirectory()) {
+//            return cliBoardList; // 디렉토리가 없으면 빈 리스트 반환
+//        }
+//
+//        File[] files = tableDir.listFiles((dir, name) -> name.endsWith(".json"));
+//        if (files != null) {
+//            for (File file : files) {
+//                String cliBoardJsonStr = Util.file.get(file.getAbsolutePath(), "");
+//                if (!cliBoardJsonStr.isBlank()) {
+//                    Map<String, Object> cliBoardMap = Util.json.toMap(cliBoardJsonStr);
+//                    cliBoardList.add(new CliBoard(cliBoardMap));
+//                }
+//            }
+//        }
+//        return cliBoardList;
+//    }
+
+
+    public void saveAll(List<CliBoard> cliBoards){
+        List<Map<String, Object>> mapList = cliBoards.stream()
+                .map(CliBoard::toMap)
+                .toList();
+        String jsonStr = Util.json.toString(mapList);
+        Util.file.set(dataFilePath, jsonStr);
+    }
+
     public List<CliBoard> findAll() {
-        List<CliBoard> cliBoardList = new ArrayList<>();
-        File tableDir = new File(getTableDirPath());
-        if (!tableDir.exists() || !tableDir.isDirectory()) {
-            return cliBoardList; // 디렉토리가 없으면 빈 리스트 반환
+        String jsonStr = Util.file.get(dataFilePath, "[]");
+
+        if(jsonStr.isBlank() || jsonStr.equals("[]")){
+            return new ArrayList<>();
         }
 
-        File[] files = tableDir.listFiles((dir, name) -> name.endsWith(".json"));
-        if (files != null) {
-            for (File file : files) {
-                String cliBoardJsonStr = Util.file.get(file.getAbsolutePath(), "");
-                if (!cliBoardJsonStr.isBlank()) {
-                    Map<String, Object> cliBoardMap = Util.json.toMap(cliBoardJsonStr);
-                    cliBoardList.add(new CliBoard(cliBoardMap));
-                }
-            }
-        }
-        return cliBoardList;
+        List<Map<String, Object>> mapList = Util.json.toList(jsonStr);
+
+        return mapList.stream()
+                .map(CliBoard::new)
+                .collect(Collectors.toList());
     }
 
 }

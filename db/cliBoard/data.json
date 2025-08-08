@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "title": "test1",
+        "content": "content1",
+        "createDate": "2025-08-08",
+        "viewCount": 0
+    },
+    {
+        "id": 2,
+        "title": "test2",
+        "content": "content2",
+        "createDate": "2025-08-08",
+        "viewCount": 0
+    }
+]

@@ -17,11 +17,16 @@ public class cliBoardService {
         cliBoardFileRepository = AppContext.cliBoardFileRepository;
     }
 
+    private void saveChanges(){
+        List<CliBoard> allBoards = cliBoardRepository.findAllForSave();
+        cliBoardFileRepository.saveAll(allBoards);
+    }
+
     public CliBoard write (String title, String content) {
         CliBoard cliBoard = new CliBoard(title, content);
         cliBoardRepository.save(cliBoard);
 
-        cliBoardFileRepository.save(cliBoard);
+        saveChanges();
         return cliBoard;
     }
 
@@ -36,6 +41,7 @@ public class cliBoardService {
         if (cliBoard == null) return false;
 
         cliBoardRepository.delete(cliBoard);
+        saveChanges();
         return true;
     }
 
@@ -47,8 +53,8 @@ public class cliBoardService {
         cliBoard.setContent(modifyContent);
         cliBoard.setTitle(modifyTitle);
 
-        cliBoardFileRepository.save(cliBoard);
-        cliBoardRepository.save(cliBoard);
+        //cliBoardRepository.save(cliBoard);
+        saveChanges();
     }
 
     public void increaseViewCount(int id){
@@ -57,7 +63,7 @@ public class cliBoardService {
 
         cliboard.increaseViewCount();
 
-        cliBoardFileRepository.save(cliboard);
-        cliBoardRepository.save(cliboard);
+        //cliBoardRepository.save(cliboard);
+        saveChanges();
     }
 }

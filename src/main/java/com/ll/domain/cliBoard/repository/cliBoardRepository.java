@@ -38,6 +38,10 @@ public class cliBoardRepository {
         return cliBoardList.reversed();
     }
 
+    public List<CliBoard> findAllForSave(){
+        return new ArrayList<>(cliBoardList);
+    }
+
     public void delete(CliBoard cliBoard) {
         cliBoardList.remove(cliBoard);
     }

@@ -3,6 +3,7 @@ package com.ll.util;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -167,37 +168,57 @@ public class Util {
         public static Map<String, Object> toMap(String jsonStr) {
             Map<String, Object> map = new LinkedHashMap<>();
 
-            jsonStr = jsonStr.substring(1, jsonStr.length() - 1);
+            // 중괄호 제거
+            String content = jsonStr.trim().substring(1, jsonStr.length() - 1).trim();
 
-            String[] jsonStrBits = jsonStr.split(",\n    \"");
+            // 정규식을 사용하여 "키": "값" 또는 "키": 숫자 형식의 쌍을 찾음
+            java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(
+                    "\"(.*?)\"\\s*:\\s*(\".*?\"|\\d+|true|false)"
+            );
+            java.util.regex.Matcher matcher = pattern.matcher(content);
 
-            for (String jsonStrBit : jsonStrBits) {
-                jsonStrBit = jsonStrBit.trim();
+            while (matcher.find()) {
+                String key = matcher.group(1);
+                String valueStr = matcher.group(2);
+                Object value;
 
-                if (jsonStrBit.endsWith(",")) jsonStrBit = jsonStrBit.substring(0, jsonStrBit.length() - 1);
-
-                String[] jsonField = jsonStrBit.split("\": ");
-
-                String key = jsonField[0];
-                if (key.startsWith("\"")) key = key.substring(1);
-
-                boolean valueIsString = jsonField[1].startsWith("\"") && jsonField[1].endsWith("\"");
-                String value = jsonField[1];
-
-                if (valueIsString) value = value.substring(1, value.length() - 1);
-
-                if (valueIsString) {
-                    map.put(key, value);
-                } else if (value.equals("true") || value.equals("false")) {
-                    map.put(key, value.equals("true"));
-                } else if (value.contains(".")) {
-                    map.put(key, Double.parseDouble(value));
+                // 값이 문자열인지, 숫자인지, 불리언인지 확인
+                if (valueStr.startsWith("\"") && valueStr.endsWith("\"")) {
+                    value = valueStr.substring(1, valueStr.length() - 1); // 따옴표 제거
+                } else if (valueStr.equals("true") || valueStr.equals("false")) {
+                    value = Boolean.parseBoolean(valueStr);
                 } else {
-                    map.put(key, Integer.parseInt(value));
+                    // 숫자 파싱 (정수/실수 구분은 생략하고 Long으로 처리)
+                    try {
+                        value = Long.parseLong(valueStr);
+                    } catch (NumberFormatException e) {
+                        // 파싱 실패 시 원본 문자열 사용
+                        value = valueStr;
+                    }
                 }
+                map.put(key, value);
             }
-
             return map;
+        }
+
+        public static List<Map<String, Object>> toList(String jsonStr) {
+            List<Map<String, Object>> list = new ArrayList<>();
+            String content = jsonStr.trim();
+            if (!content.startsWith("[") || !content.endsWith("]")) return list;
+
+            // 대괄호 제거
+            content = content.substring(1, content.length() - 1).trim();
+            if (content.isEmpty()) return list;
+
+            // 정규식을 사용하여 {...} 객체들을 찾음
+            java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\{.*?\\}");
+            java.util.regex.Matcher matcher = pattern.matcher(content);
+
+            while (matcher.find()) {
+                String objectStr = matcher.group();
+                list.add(toMap(objectStr));
+            }
+            return list;
         }
     }
 }
