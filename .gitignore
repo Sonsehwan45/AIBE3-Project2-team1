@@ -40,3 +40,16 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Claude ###
+.claude/
+.claude-code/
+*.claude-backup
+*.claude-temp
+claude-session.json
+claude-workspace.json
+
+### Project Documentation ###
+PROJECT_GUIDE.md
+CLAUDE_CODE_GUIDE.md
+*_claude_guide.md
